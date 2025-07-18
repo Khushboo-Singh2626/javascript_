@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .guide {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .guide ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>BMI Calculator</h2>
+
+  <div class="calculator">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <button id = "button" >Calculate</button>
+    <div class="result" id="result"></div>
+  <div class = "des"></div>
+
+    <div class="guide">
+      <h4>BMI Guide:</h4>
+      <ul>
+        <li>Underweight: &lt; 18.5</li>
+        <li>Normal: 18.5 – 24.9</li>
+        <li>Overweight: 25 – 29.9</li>
+        <li>Obese: 30 or more</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+//   const height = parseFloat(document.querySelector('#height').value)
+//   const weight = parseFloat(document.querySelector('#weight').value)
+  const text = document.createElement('span')
+  const span = document.createElement('span')
+   document.querySelector('.result').appendChild(text)
+   document.querySelector('.des').appendChild(span)
+
+  const calculate = document.querySelector("#button")
+  calculate.addEventListener('click',function(e){
+      const height = parseFloat(document.querySelector('#height').value)
+  const weight = parseFloat(document.querySelector('#weight').value)
+  const bmi = (weight*100*100)/(height*height)
+  text.textContent = `Your bmi is ${bmi}`
+
+  if(bmi<18.5)
+  span.textContent = "You are underweight"
+
+  if(bmi>=25 && bmi<29.9)
+  span.textContent = "You are overweight"
+
+  if(bmi>=18.5 && bmi<24.9)
+  span.textContent = "You are Normal"
+
+  if(bmi>=30)
+  span.textContent = "You are obese"
+   
+  })
+
+  </script>
+  </body>
+</html>
+
+<!-- *************************MISTAKES************************ -->
+ <!-- 1 -  I WAS taking directly weight and heigjt means i was taking the whole dom element instead of that i have to take its value
+ 2 - I was taking height and weight before the page loads so i was getting an output NaN 
+ 3 - span does not have .value property so i can't use text.value  instead of that use store the value in any const then add it-->

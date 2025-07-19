@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Four Boxes</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: 100px 100px;
+      gap: 10px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .box1 {
+      background-color: #ff6b6b;
+      border: 2px solid black;
+    }
+
+    .box2 {
+      background-color: #6bc5ff;
+      border: 2px solid black;
+    }
+
+    .box3 {
+      background-color: #6bff9c;
+      border: 2px solid black;
+    }
+
+    .box4 {
+      background-color: #ffc36b;
+      grid-column: 2;
+      grid-row: 2;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click any box to change the background color</h2>
+
+  <div class="container">
+    <div id = "1" class="box box1"></div>
+    <div id = "2"class="box box2"></div>
+    <div id = "3" class="box box3"></div>
+    <div id = "4" class="box box4"></div>
+  </div>
+
+
+  <script>
+    const body = document.querySelector('body')
+    const button = document.querySelectorAll('.container')
+    button.forEach(function(button){
+      button.addEventListener('click',function(e){
+      if(e.target.className === 'box box1')
+      body.style.backgroundColor ='#ff6b6b'
+
+       if(e.target.className === 'box box2')
+      body.style.backgroundColor ='#6bc5ff'
+
+       if(e.target.className === 'box box3')
+      body.style.backgroundColor ='#6bff9c'
+
+       if(e.target.className === 'box box4')
+      body.style.backgroundColor ='#ffc36b'
+      })
+    })
+  </script>
+</body>
+</html>
